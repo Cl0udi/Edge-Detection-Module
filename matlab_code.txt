@@ -1,0 +1,16 @@
+For converting bmp file of size 512x768 to a text file with the pixels in Hex values.
+
+b=imread('C:\path\Circle.bmp'); % 24-bit BMP image RGB888 
+k=1;
+for i=512:-1:1
+for j=1:768
+a(k)=b(i,j,1);
+a(k+1)=b(i,j,2);
+a(k+2)=b(i,j,3);
+k=k+3;
+end
+end
+fid = fopen('C:\path\Circle.hex', 'w+');
+fprintf(fid, '%x\n', a);
+disp('Text file write done');disp(' ');
+fclose(fid);
